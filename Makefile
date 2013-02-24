@@ -10,17 +10,17 @@
 # TARGET: name of the output file
 TARGET = main
 # MCU: part number to build for
-MCU = atmega328p
+MCU = attiny13
 # SOURCES: list of input source sources
 SOURCES = main.c
 # OUTDIR: directory to use for output
 OUTDIR = build
 # PROGRAMMER: name of programmer
-PROGRAMMER = arduino
+PROGRAMMER = usbasp
 # PORT: location of programmer
-PORT = /dev/ttyACM0
+PORT = usb
 # define flags
-CFLAGS = -mmcu=$(MCU) -g -O0 -Wall -Wunused
+CFLAGS = -mmcu=$(MCU) -g -Os -Wall -Wunused
 ASFLAGS = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
 LDFLAGS = -mmcu=$(MCU) -Wl,-Map=$(OUTDIR)/$(TARGET).map
 AVRDUDE_FLAGS = -p $(MCU) -c $(PROGRAMMER) -P $(PORT)
